@@ -1,0 +1,25 @@
+.ciad_logo_container{
+    background-color: rgb(191, 213, 201);
+    border: solid;
+    border-width: 5px;
+    border-radius: 10px;
+    border-color: rgb(47, 107, 75);
+    margin: 8px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    padding-left: 35px;
+}
+
+.ciad_logo{
+    height: 100px;
+}
+
+.sidebar{
+    z-index: 101;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 0px;
+    background-color: rgb(59, 135, 95);
+    width: 210px;
+}

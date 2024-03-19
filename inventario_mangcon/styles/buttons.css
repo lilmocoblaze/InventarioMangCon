@@ -1,0 +1,62 @@
+button:hover{
+    cursor: pointer;
+    background-color: rgb(74, 166, 117);
+    border-radius: 8px;
+}
+
+.ciad_logo_container:hover{
+    cursor: pointer;
+}
+
+.lista_muestras_button,
+.agregar_muestra_button,
+.editar_muestra_button{
+    display: inline-block;
+    background-color: rgb(59, 135, 95);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 22px;
+    font-family: Inter;
+    border: solid 0px;
+    width: 210px;
+    height: 70px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    transition: font-size 0.15s, border-width 0.15s, background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.submit_button{
+    border: solid 2px;
+    border-radius: 8px;
+    background-color: rgb(241, 237, 237);
+    border-color: rgb(59, 135, 95);
+    color: rgb(59, 135, 95);
+    font-size: 20px;
+    font-weight: bold;
+    width: 100px;
+    height: 50px;
+    transition: all 0.15s;
+}
+
+.submit_button:hover{
+    cursor: pointer !important;
+    background-color: rgb(59, 135, 95);
+    color: white;
+}
+
+.submit_button:active{
+    opacity: 0.8;
+}
+
+.lista_muestras_button{
+    margin-top: 40px;
+}
+
+.lista_muestras_button:active,
+.agregar_muestra_button:active,
+.editar_muestra_button:active{
+    font-size: 20px;
+    background-color: rgb(89, 198, 140);
+}
