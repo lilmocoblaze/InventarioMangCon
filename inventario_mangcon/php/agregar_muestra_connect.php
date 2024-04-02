@@ -1,12 +1,12 @@
 <?php
 
 // 
-if(isset($_POST['tipoMuestra'])){
+if(isset($_POST['concepto'])){
 
 $host = "localhost";
 $username = "root";
 $passwd = "";
-$dbname = "inventario_vegetales";
+$dbname = "inv_912";
 
 //Database connection code - localhost, db_user, db_pass and db_name
 $con = mysqli_connect($host, $username, $passwd, $dbname);
@@ -17,26 +17,18 @@ if ($con->connect_error) {
 }
 
 // get the post records
-$tipoMuestra = $_POST['tipoMuestra'];
-$procedencia = $_POST['procedencia'];
-$municipio = $_POST['municipio'];
-$coordenadas = $_POST['coordenadas'];
-$predio = $_POST['predio'];
-$fechaTomaMuestra = $_POST['fechaTomaMuestra'];
-$claveInterna = $_POST['claveInterna'];
-$nombreProductor = $_POST['nombreProductor'];
-$tipoRiego = $_POST['tipoRiego'];
-$temporada = $_POST['temporada'];
-$tipoManejo = $_POST['tipoManejo'];
-$observaciones = $_POST['observaciones'];
+$concepto = $_POST['concepto'];
+$precio_publico = $_POST['precio_publico'];
+$ult_actual = $_POST['ult_actual'];
+$cant_sug_stock = $_POST['cant_sug_stock'];
 
 // database insert SQL code
-$sql = "INSERT INTO `muestras` (`tipoMuestra`, `procedencia`, `municipio`, `coordenadas`, `predio`, `fechaTomaMuestra`, `claveInterna`, `nombreProductor`, `tipoRiego`, `temporada`, `tipoManejo`, `observaciones`) 
-VALUES ('$tipoMuestra', '$procedencia', '$municipio', '$coordenadas','$predio', '$fechaTomaMuestra', '$claveInterna', '$nombreProductor', '$tipoRiego', '$temporada', '$tipoManejo', '$observaciones')";
+$sql = "INSERT INTO `articulos` (`concepto`, `precio_publico`, `ult_actual`, `cant_sug_stock`) 
+VALUES ('$concepto', '$precio_publico', '$ult_actual', '$cant_sug_stock')";
 
 // insert in database
 $rs = mysqli_query($con, $sql);
 
-header("Location: /inventario_vegetales/agregar_muestra.php");
+header("Location: /inventario_mangcon/agregar_muestra.php");
 }
 ?>

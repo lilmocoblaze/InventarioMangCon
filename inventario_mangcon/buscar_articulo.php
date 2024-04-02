@@ -72,6 +72,17 @@
     </div>
 
     <div class="data_table_container">
+
+    </div>
+
+    <div class="data_table_container">
+        <legend class="form_datos_muestra_header">Búsqueda de artículos</legend>
+
+        <form method="GET" action="buscar_articulo.php">
+            <input type="text" name="buscarConcepto" placeholder="Concepto del artículo">
+            <button type="submit">Buscar</button>
+        </form>
+
         <?php
             // Tu código de conexión a la base de datos
             $host     = "localhost";
@@ -84,7 +95,7 @@
             if(!$con) {
                 die(mysqli_connect_error());
             } else {
-                echo "Lista de artículos <br> <br>";
+                echo "";
             }
 
             // Verificar si se envió el formulario POST para editar la muestra
@@ -109,7 +120,7 @@
                 $ult_actual = empty($_POST['ult_actual']) ? $row['ult_actual'] : $_POST['ult_actual'];
                 $cant_sug_stock = empty($_POST['cant_sug_stock']) ? $row['cant_sug_stock'] : $_POST['cant_sug_stock'];
 
-                $update_sql = "UPDATE articulos SET
+                $update_sql = "UPDATE pacientes SET
                             concepto = '$concepto',
                             precio_publico = '$precio_publico',
                             ult_actual = '$ult_actual',
@@ -134,32 +145,39 @@
                 }
             }
 
-            $sql = "SELECT concepto, precio_publico, ult_actual, cant_sug_stock FROM articulos ORDER BY concepto";
-
-            $result = mysqli_query($con, $sql);
-
-            if(mysqli_num_rows($result) > 0) {
-                echo '<table> <tr> 
-                <th> Concepto </th> 
-                <th> Precio al público con IVA </th> 
-                <th> Última actualización </th> 
-                <th> Cantidad sugerida en stock </th> 
-                <th> Acción </th> </tr>';
-                while($row = mysqli_fetch_assoc($result)){
-                    echo '<tr>
-                    <td>'  . $row["concepto"]   . '</td>
-                    <td> ' . $row["precio_publico"]   . '</td>
-                    <td> ' . $row["ult_actual"]     . '</td>
-                    <td> ' . $row["cant_sug_stock"]       . '</td>
-                    <td>
-                        <a href="editar_muestra.php?concepto=' . $row["concepto"] . '">Editar</a>
-                        <a href="eliminar_muestra.php?concepto=' . $row["concepto"] . '">Eliminar</a>
-                    </td>
-                    </tr>';
+            if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['buscarConcepto'])) {
+                $buscarConcepto = $_GET['buscarConcepto'];
+            
+                // Construir la consulta SQL basada en los criterios de búsqueda
+                $sql = "SELECT * FROM articulos WHERE concepto LIKE '%$buscarConcepto%'";
+            
+                // Ejecutar la consulta
+                $result = mysqli_query($con, $sql);
+            
+                // Mostrar los resultados de la búsqueda
+                if(mysqli_num_rows($result) > 0) {
+                    echo '<table> <tr> 
+                    <th> Concepto </th> 
+                    <th> Precio al público con IVA </th> 
+                    <th> Última actualización </th> 
+                    <th> Cantidad sugerida en stock </th> 
+                    <th> Acción </th> </tr>';
+                    while($row = mysqli_fetch_assoc($result)){
+                        echo '<tr>
+                        <td>'  . $row["concepto"]   . '</td>
+                        <td> ' . $row["precio_publico"]   . '</td>
+                        <td> ' . $row["ult_actual"]     . '</td>
+                        <td> ' . $row["cant_sug_stock"]       . '</td>
+                        <td>
+                            <a href="editar_muestra.php?concepto=' . $row["concepto"] . '">Editar</a>
+                            <a href="eliminar_muestra.php?concepto=' . $row["concepto"] . '">Eliminar</a>
+                        </td>
+                        </tr>';
+                    }
+                    echo '</table>';
+                } else {
+                    echo "No se encontraron resultados.";
                 }
-                echo '</table>';
-            } else {
-                echo "0 results";
             }
 
             mysqli_close($con);

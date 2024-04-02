@@ -1,6 +1,6 @@
 button:hover{
     cursor: pointer;
-    background-color: rgb(74, 166, 117);
+    background-color: rgb(74, 122, 166);
     border-radius: 8px;
 }
 
@@ -12,7 +12,7 @@ button:hover{
 .agregar_muestra_button,
 .editar_muestra_button{
     display: inline-block;
-    background-color: rgb(59, 135, 95);
+    background-color: rgb(59, 96, 135);
     color: rgb(255, 255, 255);
     font-weight: bold;
     font-size: 22px;
@@ -31,8 +31,8 @@ button:hover{
     border: solid 2px;
     border-radius: 8px;
     background-color: rgb(241, 237, 237);
-    border-color: rgb(59, 135, 95);
-    color: rgb(59, 135, 95);
+    border-color: rgb(59, 96, 135);
+    color: rgb(59, 96, 135);
     font-size: 20px;
     font-weight: bold;
     width: 100px;
@@ -42,7 +42,7 @@ button:hover{
 
 .submit_button:hover{
     cursor: pointer !important;
-    background-color: rgb(59, 135, 95);
+    background-color: rgb(59, 96, 135);
     color: white;
 }
 
@@ -58,5 +58,5 @@ button:hover{
 .agregar_muestra_button:active,
 .editar_muestra_button:active{
     font-size: 20px;
-    background-color: rgb(89, 198, 140);
+    background-color: rgb(87, 142, 200);
 }
